@@ -25,10 +25,10 @@ function remove(){
 
 function strike(){
     const line = this.event.currentTarget;
-    if (line.style.textDecoration === 'none'){
-        line.style.textDecoration = 'line-through';
-    } else {
+    if (line.style.textDecoration === 'line-through'){
         line.style.textDecoration = 'none';
+    } else {
+        line.style.textDecoration = 'line-through';
     }
 }
 
