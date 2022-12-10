@@ -1,32 +1,32 @@
+
 const addButton = document.getElementById('addEntry');
 const enterItem = document.getElementById('enterItem');
 const shoppingList = document.getElementById('shoppingList');
 
 
 addButton.addEventListener('click', function(){
-    const li = document.createElement('li');
+    const ul = document.createElement('ul');
     const delButton = document.createElement('button');
     const delButtonX = document.createTextNode('x');
     const text = document.createTextNode(enterItem.value);
     delButton.addEventListener('click', remove)
+    delButton.setAttribute('class', 'btn btn-danger')
     delButton.appendChild(delButtonX);
-    li.appendChild(text);
-    li.appendChild(delButton);
-    li.addEventListener('click', strike);
-    shoppingList.appendChild(li);
+    ul.appendChild(delButton);
+    ul.appendChild(text);
+    ul.addEventListener('click', strike);
+    shoppingList.appendChild(ul);
     localStorage.setItem('items', shoppingList.innerHTML)
     enterItem.value = '';
 })
 
 function remove(e){
     const button = e.currentTarget.parentNode;
-    console.log(button);
     shoppingList.removeChild(button);
 }
 
 function strike(e){
     const line = e.currentTarget;
-    console.log(line);
     if (line.style.textDecoration === 'line-through'){
         line.style.textDecoration = 'none';
     } else {
